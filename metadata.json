@@ -1,0 +1,6 @@
+{
+  "name": "PlywoodGenerator",
+  "description": "A React application to generate printable labels for plywood stock in a warehouse. Enter plywood details to create a standardized label with a QR code.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

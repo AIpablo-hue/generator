@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plywood Label Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Ensure body takes full height for centering content */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url('https://img.freepik.com/free-photo/plain-smooth-green-wall-texture_53876-129746.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    #root {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media print {
+      body {
+        background-image: none !important; /* Remove background image for printing */
+      }
+      body * {
+        visibility: hidden;
+        print-color-adjust: exact; /* Ensures background colors and images are printed if specified */
+        -webkit-print-color-adjust: exact; /* For Chrome/Safari */
+      }
+      #label-to-print, #label-to-print * {
+        visibility: visible;
+      }
+      #label-to-print {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: var(--print-label-width, 210mm); 
+        height: var(--print-label-height, 148mm); 
+        margin: 0;
+        padding: 0; 
+        border: none !important; 
+        box-shadow: none !important; 
+        /* Removed: transform: rotate(var(--print-label-rotation-degrees, 0)deg); */
+        page-break-inside: avoid;
+        overflow: hidden; 
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-dom": "https://esm.sh/react-dom@^19.1.0",
+    "react-dom/client": "https://esm.sh/react-dom@^19.1.0/client",
+    "qrcode.react": "https://esm.sh/qrcode.react@^4.2.0",
+    "qrcode": "https://esm.sh/qrcode@^1.5.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^0.14.0",
+    "pdfjs-dist": "https://esm.sh/pdfjs-dist@^4.4.168/legacy/build/pdf.mjs",
+    "pdfjs-dist/build/pdf.worker.mjs": "https://esm.sh/pdfjs-dist@^4.4.168/legacy/build/pdf.worker.mjs"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-100"> 
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
